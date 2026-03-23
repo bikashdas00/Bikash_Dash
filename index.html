@@ -1,134 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIKASH TERMINAL - v4.0.2</title>
+    <title>Daraz Clone | সেরা অনলাইন শপিং</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: black;
-            color: #00FF41; /* Classic Matrix Green */
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
-            margin: 0;
-            padding: 20px;
-        }
-
-        #terminal {
-            width: 100%;
-            height: 90vh;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        .header {
-            color: white;
-            border-bottom: 2px dashed #00FF41;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px #00FF41;
-        }
-
-        .access-denied {
-            color: #FF3131;
-            font-weight: bold;
-            font-size: 2em;
-            text-align: center;
-            border: 3px solid #FF3131;
-            padding: 20px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            background: rgba(0,0,0,0.9);
-            box-shadow: 0 0 20px #FF3131;
-            z-index: 100;
-        }
-
-        .loading-bar {
-            color: yellow;
-        }
-
-        span.user { color: #00FF41; }
-        span.system { color: #00bcd4; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f4f4f4; }
+        .orange-gradient { background: linear-gradient(90deg, #f85606 0%, #ff8c00 100%); }
     </style>
 </head>
-<body onclick="showAccessDenied()">
+<body>
 
-    <div class="header">
-        [ SYSTEM OVERRIDE BY: BIKASH ] <br>
-        SECURITY LEVEL: CRITICAL | IP: 192.168.1.104 | STATUS: INFILTRATING...
+    <div class="bg-gray-100 py-1 text-xs text-gray-600 border-b">
+        <div class="container mx-auto flex justify-between px-4">
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-orange-600 transition">সেলার হোন</a>
+                <a href="#" class="hover:text-orange-600 transition">হেল্প সেন্টার</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="font-bold text-orange-600">অ্যাপ ডাউনলোড করুন</a>
+                <a href="#">লগইন</a>
+                <a href="#">সাইন আপ</a>
+            </div>
+        </div>
     </div>
 
-    <div id="terminal"></div>
+    <nav class="sticky top-0 z-50 bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between gap-6">
+            <div class="flex-shrink-0">
+                <h1 class="text-4xl font-black text-[#f85606] italic tracking-tighter">Daraz</h1>
+            </div>
 
-    <div id="accessBox" class="access-denied">
-        !! ACCESS DENIED !! <br>
-        FIREWALL DETECTED BY BIKASH SYSTEM
+            <div class="flex-grow max-w-2xl relative">
+                <input type="text" placeholder="দারাজে খুঁজুন..." 
+                       class="w-full bg-gray-100 border-none rounded-md py-2 px-4 focus:ring-2 focus:ring-orange-500 outline-none">
+                <button class="absolute right-0 top-0 h-full bg-[#f85606] px-5 rounded-r-md text-white hover:bg-orange-700">
+                    🔍
+                </button>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <div class="relative cursor-pointer">
+                    <span class="text-2xl">🛒</span>
+                    <span class="absolute -top-2 -right-2 bg-orange-600 text-white text-[10px] rounded-full px-1.5 py-0.5">৩</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 mt-6">
+        <div class="flex flex-col lg:flex-row gap-4">
+            <div class="hidden lg:block w-64 bg-white rounded-lg p-4 shadow-sm text-sm">
+                <ul class="space-y-3">
+                    <li class="hover:text-orange-500 cursor-pointer">Electronics</li>
+                    <li class="hover:text-orange-500 cursor-pointer">Fashion & Beauty</li>
+                    <li class="hover:text-orange-500 cursor-pointer">Home & Lifestyle</li>
+                    <li class="hover:text-orange-500 cursor-pointer">Groceries</li>
+                    <li class="hover:text-orange-500 cursor-pointer">Sports & Outdoor</li>
+                    <li class="hover:text-orange-500 cursor-pointer">Automotive</li>
+                </ul>
+            </div>
+            <div class="flex-grow h-64 md:h-80 orange-gradient rounded-xl flex items-center justify-center text-white relative overflow-hidden">
+                <div class="text-center z-10">
+                    <h2 class="text-4xl font-bold mb-2">বিশাল ঈদ ধামাকা!</h2>
+                    <p class="text-xl">সর্বোচ্চ ৭০% পর্যন্ত ছাড়</p>
+                    <button class="mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:shadow-lg transition">এখনই কিনুন</button>
+                </div>
+                <div class="absolute -right-10 opacity-20 text-[150px] font-black">SALE</div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        const terminal = document.getElementById('terminal');
-        const accessBox = document.getElementById('accessBox');
+    <div class="container mx-auto px-4 mt-10">
+        <div class="flex justify-between items-end mb-4">
+            <h3 class="text-2xl font-bold text-gray-800">ফ্ল্যাশ সেল (Flash Sale)</h3>
+            <a href="#" class="text-orange-600 font-bold border-2 border-orange-600 px-4 py-1 rounded hover:bg-orange-600 hover:text-white transition">সব দেখুন</a>
+        </div>
 
-        // হ্যাকিং ড্রামা টেক্সট
-        const logs = [
-            "> Initializing BIKASH_EXPLOIT_V2.exe...",
-            "> Connecting to secure proxy 124.55.21.9...",
-            "> Connection established.",
-            "> Bypassing SSL layers...",
-            "> Injecting SQL payloads into main database...",
-            "> Found vulnerability in port 8080...",
-            "> Downloading encrypted credentials...",
-            "> [######..........] 30% complete",
-            "> Decrypting SHA-256 hashes...",
-            "> WARNING: Root access requested!",
-            "> Brute-forcing admin password...",
-            "> [##########......] 65% complete",
-            "> Accessing Mainframe via BIKASH-GATEWAY...",
-            "> SUCCESS: Admin privileges granted.",
-            "> Executing: rm -rf /root/security_logs",
-            "> Uploading virus: TROJAN_BIKASH_01...",
-            "> [################] 100% complete",
-            "> System compromised. Waiting for input...",
-            "-------------------------------------------"
-        ];
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div class="bg-white rounded shadow-sm hover:shadow-xl transition group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300" class="w-full h-40 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm line-clamp-2 mb-2 group-hover:text-orange-600">Luxury Smart Watch - Series 7</h4>
+                    <p class="text-orange-600 text-lg font-bold">৳ ২,৫০০</p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs line-through text-gray-400">৳ ৪,০০০</span>
+                        <span class="text-xs text-gray-700">-৩৮%</span>
+                    </div>
+                </div>
+            </div>
 
-        let i = 0;
-        function typeLog() {
-            if (i < logs.length) {
-                const line = document.createElement('div');
-                line.innerHTML = logs[i];
-                terminal.appendChild(line);
-                terminal.scrollTop = terminal.scrollHeight;
-                i++;
-                setTimeout(typeLog, Math.random() * 800 + 200); // র‍্যান্ডম টাইপিং স্পিড
-            } else {
-                i = 0; // রিপিট হবে
-                setTimeout(typeLog, 1000);
-            }
-        }
+            <div class="bg-white rounded shadow-sm hover:shadow-xl transition group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300" class="w-full h-40 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm line-clamp-2 mb-2 group-hover:text-orange-600">Wireless Noise Cancelling Headphones</h4>
+                    <p class="text-orange-600 text-lg font-bold">৳ ৪,২০০</p>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="line-through text-gray-400">৳ ৬,৫০০</span>
+                        <span>-৩৫%</span>
+                    </div>
+                </div>
+            </div>
 
-        // স্ক্রিনে ক্লিক করলে Access Denied দেখাবে
-        function showAccessDenied() {
-            accessBox.style.display = 'block';
-            setTimeout(() => {
-                accessBox.style.display = 'none';
-            }, 2000);
-        }
+            <div class="bg-white rounded shadow-sm hover:shadow-xl transition group cursor-pointer hidden md:block">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300" class="w-full h-40 object-cover">
+                <div class="p-3">
+                    <h4 class="text-sm line-clamp-2 mb-2">Red Nike Edition Sports Shoe</h4>
+                    <p class="text-orange-600 text-lg font-bold">৳ ৫,৮০০</p>
+                    <p class="text-xs text-gray-400">৳ ৭,০০০</p>
+                </div>
+            </div>
 
-        // টাইপিং শুরু
-        typeLog();
+            </div>
+    </div>
 
-        // কিবোর্ড টিপলে হ্যাকিং স্টাইল কোড আসবে (Just for show)
-        window.addEventListener('keydown', function(e) {
-            const fakeCode = document.createElement('span');
-            fakeCode.innerHTML = "GET /admin/login.php?id=" + Math.random().toString(36).substring(7) + " <br> ";
-            terminal.appendChild(fakeCode);
-            terminal.scrollTop = terminal.scrollHeight;
-        });
-    </script>
+    <div class="container mx-auto px-4 mt-16 mb-10">
+        <div class="bg-white p-8 rounded-xl flex flex-col md:flex-row items-center justify-between shadow-sm border">
+            <div>
+                <h4 class="text-xl font-bold italic">দারাজের সাথে থাকুন</h4>
+                <p class="text-gray-500">আপনার ইমেইল দিয়ে সাবস্ক্রাইব করুন নতুন সব অফারের জন্য</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex w-full md:w-auto">
+                <input type="email" placeholder="ইমেইল এড্রেস" class="border p-2 rounded-l-md outline-none w-64">
+                <button class="bg-orange-600 text-white px-6 py-2 rounded-r-md font-bold">সাবস্ক্রাইব</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white py-10 border-t">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>© ২০২৬ Daraz Clone | এটি শুধুমাত্র একটি ডেমো ওয়েবসাইট</p>
+        </div>
+    </footer>
+
 </body>
 </html>
