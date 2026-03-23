@@ -1,37 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mango.OS | Futuristic Export Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <title>আম.OS | ভবিষ্যতের এক্সপোর্ট হাব</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Hind+Siliguri:wght@300;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { margin: 0; background: #050505; color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+        body { 
+            margin: 0; 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); 
+            color: white; 
+            font-family: 'Hind Siliguri', sans-serif; 
+            overflow: hidden; 
+        }
         canvas { display: block; position: fixed; top: 0; left: 0; z-index: 1; }
         
+        /* গ্লাস মরফিজম ইফেক্ট */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .mango-glow {
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        .neon-text {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
+        /* স্ক্যানলাইন এনিমেশন */
         .scanline {
-            width: 100%; height: 2px;
-            background: rgba(255, 215, 0, 0.1);
-            position: absolute; top: 0;
-            animation: scan 4s linear infinite;
-            z-index: 10;
+            width: 100%; height: 100vh;
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 215, 0, 0.02) 50%);
+            background-size: 100% 4px;
+            position: absolute; pointer-events: none; z-index: 10;
         }
 
-        @keyframes scan {
-            from { top: 0%; }
-            to { top: 100%; }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.6);
         }
     </style>
 </head>
@@ -39,53 +56,81 @@
 
     <div class="scanline"></div>
 
-    <div class="relative z-10 flex flex-col h-screen justify-between p-10 pointer-events-none">
+    <div class="relative z-10 flex flex-col h-screen justify-between p-6 md:p-12 pointer-events-none">
         
-        <header class="flex justify-between items-center pointer-events-auto">
-            <h1 class="text-3xl font-black tracking-tighter text-yellow-500 font-['Orbitron']">MANGO.OS <span class="text-xs text-white opacity-50 block tracking-widest">GLOBAL EXPORT v3.0</span></h1>
-            <nav class="space-x-8 text-xs uppercase tracking-widest hidden md:flex">
-                <a href="#" class="hover:text-yellow-400">Inventory</a>
-                <a href="#" class="hover:text-yellow-400 text-yellow-500 border-b border-yellow-500">Terminal</a>
-                <a href="#" class="hover:text-yellow-400">Logistics</a>
+        <header class="flex justify-between items-start pointer-events-auto">
+            <div>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-yellow-500 font-['Orbitron'] neon-text">
+                    MANGO.OS
+                </h1>
+                <p class="text-[10px] md:text-xs text-white opacity-70 tracking-[0.5em] uppercase mt-1">
+                    গ্লোবাল এক্সপোর্ট সিস্টেম v4.0 • এআই চালিত
+                </p>
+            </div>
+            <nav class="hidden lg:flex space-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="#" class="hover:text-yellow-400 transition">ইনভেন্টরি</a>
+                <a href="#" class="text-yellow-500 border-b-2 border-yellow-500 pb-1">টার্মিনাল</a>
+                <a href="#" class="hover:text-yellow-400 transition">লজিস্টিকস</a>
+                <a href="#" class="hover:text-yellow-400 transition">সাপ্লাই চেইন</a>
             </nav>
         </header>
 
-        <div class="flex flex-col md:flex-row justify-between items-end gap-10">
-            <div class="glass p-8 w-full md:w-96 pointer-events-auto">
-                <h2 id="mango-name" class="text-5xl font-black font-['Orbitron'] mb-2 text-yellow-400 mango-glow uppercase">Alphonso</h2>
-                <p id="mango-origin" class="text-sm opacity-60 mb-6 uppercase tracking-widest">Region: Ratnagiri, India</p>
+        <div class="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-12">
+            
+            <div class="glass p-10 w-full max-w-md pointer-events-auto floating">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-tighter opacity-70">সিস্টেম স্ট্যাটাস: অনলাইন</span>
+                </div>
                 
-                <div class="flex justify-between items-center mb-6 border-y border-white/10 py-4">
-                    <span class="text-xs uppercase opacity-50">Market Price</span>
-                    <span id="mango-price" class="text-3xl font-mono text-green-400 font-bold">$25.50/KG</span>
+                <h2 id="mango-name" class="text-6xl font-bold mb-1 text-yellow-400 font-['Orbitron']">হিমসাগর</h2>
+                <p id="mango-origin" class="text-lg opacity-80 mb-8 border-l-2 border-yellow-500 pl-4">অরিজিন: রাজশাহী, বাংলাদেশ</p>
+                
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-white/5 p-4 rounded-xl">
+                        <p class="text-[10px] uppercase opacity-50 mb-1">বাজার দর</p>
+                        <p id="mango-price" class="text-2xl font-mono text-green-400 font-bold">৳ ১৮০/কেজি</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl">
+                        <p class="text-[10px] uppercase opacity-50 mb-1">স্টক এভেইলিবিলিটি</p>
+                        <p class="text-2xl font-mono text-blue-400 font-bold">১২.৫ টন</p>
+                    </div>
                 </div>
 
-                <button class="w-full bg-yellow-500 text-black font-bold py-4 rounded-lg hover:bg-yellow-400 transition transform hover:scale-105 active:scale-95">
-                    INITIATE EXPORT PROXIMITY
+                <button class="w-full bg-yellow-500 text-black font-black py-5 rounded-2xl btn-glow transition transform hover:scale-105 active:scale-95 text-lg tracking-widest">
+                    এক্সপোর্ট অর্ডার শুরু করুন
                 </button>
             </div>
 
-            <div class="pointer-events-auto group">
-                <div class="text-[10px] text-right opacity-40 uppercase mb-2">Visual Sync Verified</div>
-                <img id="mango-img" src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=400" 
-                     class="w-48 h-48 object-cover rounded-xl border-2 border-yellow-500/50 grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="pointer-events-auto group relative">
+                <div class="absolute -inset-4 bg-yellow-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition duration-700"></div>
+                <div class="relative">
+                    <div class="text-[10px] text-right opacity-50 uppercase mb-3 tracking-[3px]">HD স্ক্যানার ভিউ</div>
+                    <img id="mango-img" src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600" 
+                         class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-[40px] border-2 border-yellow-500/30 shadow-2xl group-hover:border-yellow-500 transition-all duration-700">
+                    <div class="absolute bottom-4 left-4 right-4 h-1 bg-yellow-500/30 rounded-full overflow-hidden">
+                        <div class="h-full bg-yellow-500 w-1/3 animate-[shimmer_2s_infinite]"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <footer class="flex justify-center gap-4 pointer-events-auto">
-            <button onclick="updateData('Alphonso')" class="px-6 py-2 glass text-xs uppercase tracking-widest hover:bg-yellow-500/20 transition">Alphonso</button>
-            <button onclick="updateData('Langra')" class="px-6 py-2 glass text-xs uppercase tracking-widest hover:bg-yellow-500/20 transition">Langra</button>
-            <button onclick="updateData('Haden')" class="px-6 py-2 glass text-xs uppercase tracking-widest hover:bg-yellow-500/20 transition">Haden</button>
+        <footer class="flex flex-wrap justify-center gap-4 pointer-events-auto pb-4">
+            <button onclick="updateData('হিমসাগর')" class="px-8 py-3 glass text-sm font-bold hover:bg-yellow-500 hover:text-black transition-all duration-300">হিমসাগর</button>
+            <button onclick="updateData('ল্যাংড়া')" class="px-8 py-3 glass text-sm font-bold hover:bg-yellow-500 hover:text-black transition-all duration-300">ল্যাংড়া</button>
+            <button onclick="updateData('আম্রপালি')" class="px-8 py-3 glass text-sm font-bold hover:bg-yellow-500 hover:text-black transition-all duration-300">আম্রপালি</button>
+            <button onclick="updateData('আলফনসো')" class="px-8 py-3 glass text-sm font-bold hover:bg-yellow-500 hover:text-black transition-all duration-300">আলফনসো</button>
         </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Data Configuration
+        // ডেটা কনফিগারেশন
         const mangoData = {
-            'Alphonso': { price: '$25.50/KG', origin: 'Region: Ratnagiri, India', img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=400', color: 0xFFD700 },
-            'Langra': { price: '$15.20/KG', origin: 'Region: Varanasi, India', img: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&w=400', color: 0x98FB98 },
-            'Haden': { price: '$18.90/KG', origin: 'Region: Florida, USA', img: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=400', color: 0xFF4500 }
+            'হিমসাগর': { price: '৳ ১৮০/কেজি', origin: 'অরিজিন: রাজশাহী, বাংলাদেশ', img: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600', color: 0xFFD700 },
+            'ল্যাংড়া': { price: '৳ ১৫০/কেজি', origin: 'অরিজিন: চাঁপাইনবাবগঞ্জ, বাংলাদেশ', img: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&w=600', color: 0xADFF2F },
+            'আম্রপালি': { price: '৳ ২০০/কেজি', origin: 'অরিজিন: নওগাঁ, বাংলাদেশ', img: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=600', color: 0xFFA500 },
+            'আলফনসো': { price: '৳ ৪৫০/কেজি', origin: 'অরিজিন: রত্নগিরি, ভারত', img: 'https://images.unsplash.com/photo-1550505432-84950275817a?auto=format&fit=crop&w=600', color: 0xFF8C00 }
         };
 
         function updateData(type) {
@@ -94,53 +139,59 @@
             document.getElementById('mango-price').innerText = data.price;
             document.getElementById('mango-origin').innerText = data.origin;
             document.getElementById('mango-img').src = data.img;
-            // Update 3D Object Color
+            
+            // 3D অবজেক্টের রঙ পরিবর্তন
             mangoMesh.material.color.setHex(data.color);
+            coreMat.color.setHex(data.color);
         }
 
-        // --- 3D SCENE SETUP ---
+        // --- THREE.JS 3D সেটআপ ---
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Cyber Mango (Geometric Representation)
-        const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+        // ফিউচারিস্টিক জ্যামিতিক আম (Icosahedron)
+        const geometry = new THREE.IcosahedronGeometry(2, 2);
         const material = new THREE.MeshStandardMaterial({ 
             color: 0xFFD700, 
             wireframe: true,
             emissive: 0xFFD700,
-            emissiveIntensity: 0.5
+            emissiveIntensity: 0.2
         });
         const mangoMesh = new THREE.Mesh(geometry, material);
         scene.add(mangoMesh);
 
-        // Core of the Mango
-        const coreGeo = new THREE.IcosahedronGeometry(1.2, 0);
-        const coreMat = new THREE.MeshPhongMaterial({ color: 0xFFD700, transparent: true, opacity: 0.4 });
+        // ইনার গ্লোয়িং কোর
+        const coreGeo = new THREE.IcosahedronGeometry(1.5, 1);
+        const coreMat = new THREE.MeshPhongMaterial({ 
+            color: 0xFFD700, 
+            transparent: true, 
+            opacity: 0.2,
+            shininess: 100 
+        });
         const core = new THREE.Mesh(coreGeo, coreMat);
         mangoMesh.add(core);
 
-        // Lighting
-        const light = new THREE.PointLight(0xFFFFFF, 1, 100);
+        // লাইটিং
+        const light = new THREE.PointLight(0xFFFFFF, 1.5, 100);
         light.position.set(10, 10, 10);
         scene.add(light);
-        scene.add(new THREE.AmbientLight(0x404040));
+        scene.add(new THREE.AmbientLight(0x404040, 2));
 
-        camera.position.z = 5;
+        camera.position.z = 6;
 
-        // Animation Loop
+        // এনিমেশন লুপ
         function animate() {
             requestAnimationFrame(animate);
-            mangoMesh.rotation.y += 0.005;
-            mangoMesh.rotation.x += 0.003;
-            // Floating motion
-            mangoMesh.position.y = Math.sin(Date.now() * 0.002) * 0.2;
+            mangoMesh.rotation.y += 0.003;
+            mangoMesh.rotation.z += 0.002;
+            
+            // মাউস মুভমেন্ট অনুযায়ী হালকা টিল্ট (ঐচ্ছিক)
             renderer.render(scene, camera);
         }
 
-        // Handle Resize
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
